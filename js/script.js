@@ -19,32 +19,20 @@ FSJS project 2 - List Filter and Pagination
 const studentList = document.querySelectorAll('.student-list');
 const studentItem = document.querySelectorAll('.student-item');
 const studentDetails = document.querySelectorAll('.student-details');
-const page = document.querySelector('.page');
-const currentPage = 1;
+const currentPage = ()=> {let page = 1;
+return page;
+}
+
 const studentsPerPage = 10;
-const numOfPages = Math.ceil(studentList.length/studentsPerPage);
-/***
-   Create the `showPage` function to hide all of the items in the
-   list except for the ten you want to show.
-
-   Pro Tips:
-     - Keep in mind that with a list of 54 students, the last page
-       will only display four.
-     - Remember that the first student has an index of 0.
-     - Remember that a function `parameter` goes in the parens when
-       you initially define the function, and it acts as a variable
-       or a placeholder to represent the actual function `argument`
-       that will be passed into the parens later when you call or
-       "invoke" the function
-***/
+// define the showPage function to show list of 10 students per page.
 const showPage = (list,page)=>{
-
+// definition for the first and last indexes.
 let fIndex = (page * studentsPerPage)-studentsPerPage;
 let lIndex = fIndex + (studentsPerPage -1);
-
+// loop through the list and display items from the list.
 for(let i =0;i<list.length;i++){
   if(i>= fIndex && i<= lIndex){
-  list[i].style.display = 'block';
+  list[i].style.display = "block";
     }
   else{
   list[i].style.display = 'none';
@@ -53,15 +41,31 @@ for(let i =0;i<list.length;i++){
    return list;
   }
 
-
-
-
-
 /***
    Create the `appendPageLinks function` to generate, append, and add
    functionality to the pagination buttons.
 ***/
+const appendPageLinks = (list)=>{
+// determine how many pages are needed
+let numOfPages = Math.ceil(studentItem.length/studentsPerPage);
+//create a div, give it the "pagination" class. and append to .page div
+const pageDiv = document.getElementById('.page');
+let newDiv = document.createElement('div');
+newDiv.className = "pagination";
+pageDiv.appendChild(newDiv);
 
+//add ul to the "pagination" div to store pagination links
+
+
+//for every page, add li and a tags with the page number text
+
+//add an event listener to each a tag.When clicked they call the showPage function and display correct page
+
+//loop over the pagination links to remove the active class from all the links
+
+//add the active class to the link that was just clicked. Can identify that clicked link using event.target
+
+}
 
 
 
