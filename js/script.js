@@ -49,14 +49,17 @@ const appendPageLinks = (list)=>{
 // determine how many pages are needed
 let numOfPages = Math.ceil(studentItem.length/studentsPerPage);
 //create a div, give it the "pagination" class. and append to .page div
-const pageDiv = document.getElementById('.page');
+const pageDiv = document.querySelector('.page');
 let newDiv = document.createElement('div');
 newDiv.className = "pagination";
 pageDiv.appendChild(newDiv);
+let refNode = document.querySelector('ul');
+refNode.after(newDiv);
 
 //add ul to the "pagination" div to store pagination links
-
-
+const linkList = document.createElement('ul');
+linkList.classname = 'pagination';
+newDiv.appendChild(linkList);
 //for every page, add li and a tags with the page number text
 
 //add an event listener to each a tag.When clicked they call the showPage function and display correct page
@@ -67,7 +70,7 @@ pageDiv.appendChild(newDiv);
 
 }
 
-
+showPage(studentItem,currentPage());
 
 
 // Remember to delete the comments that came with this file, and replace them with your own code comments.
