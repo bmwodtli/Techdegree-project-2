@@ -52,7 +52,8 @@ newDiv.appendChild(linkList);
 //for every page, add li and a tags with the page number text
 for(let i=1;i<=numOfPages;i++){
   const li = document.createElement('li');
-  li.className = 'active';
+  if(i === 1){
+  li.className = 'active';}
   linkList.appendChild(li);
   const aTag = document.createElement('a');
   aTag.setAttribute('href','#');
@@ -61,15 +62,19 @@ for(let i=1;i<=numOfPages;i++){
 }
 
 //add an event listener to each a tag. When clicked they call the showPage function and display correct page
- aTag.addEventListener("click",(e)=>{
+ linkList.addEventListener("click",(e)=>{
   let displayPage = e.target.textContent;
   showPage(studentItem,displayPage);
-});
 
 //loop over the pagination links to remove the active class from all the links
-
+const pagLinks = document.querySelectorAll('li');
+  for(let i =0;i<pagLinks.length;i++){
+  pagLinks[i].classList.remove('active');
+}
 //add the active class to the link that was just clicked. Can identify that clicked link using event.target
+e.target.className = 'active';
 
+});
 }
 
 showPage(studentItem,firstPage);
